@@ -50,12 +50,63 @@ function initializeSmoothScrolling() {
    ================================= */
 function initializeMobileMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const mobileLinks = document.querySelectorAll('.mobile-nav a');
 
+    // Toggle mobile menu
     mobileMenu.addEventListener('click', function() {
-        // Add mobile menu functionality here if needed
-        console.log('Mobile menu clicked');
-        // Future implementation for mobile menu toggle
+        toggleMobileMenu();
+    });
+
+    // Close mobile menu when overlay is clicked
+    mobileOverlay.addEventListener('click', function() {
+        closeMobileMenu();
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            closeMobileMenu();
+        });
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+            closeMobileMenu();
+        }
+    });
+
+    function toggleMobileMenu() {
+        const isActive = mobileNav.classList.contains('active');
+        
+        if (isActive) {
+            closeMobileMenu();
+        } else {
+            openMobileMenu();
+        }
+    }
+
+    function openMobileMenu() {
+        mobileMenu.classList.add('active');
+        mobileNav.classList.add('active');
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('active');
+        mobileNav.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+
+    // Close mobile menu on window resize (if switching to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && mobileNav.classList.contains('active')) {
+            closeMobileMenu();
+        }
     });
 }
 
