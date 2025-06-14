@@ -194,16 +194,28 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="logo">TAC Junk Removal</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu" id="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="theme-toggle-container">
+                    <span class="theme-label">☀️</span>
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode">
+                        <div class="theme-toggle-slider">
+                            <span class="theme-icon sun-icon">☀️</span>
+                            <span class="theme-icon moon-icon">🌙</span>
+                        </div>
+                    </button>
+                    <span class="theme-label">🌙</span>
+                </div>
+                <div class="mobile-menu" id="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
         
@@ -215,11 +227,25 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <!-- Mobile Theme Toggle -->
+            <div class="theme-toggle-container mobile-theme-toggle-container" style="margin-top: 2rem; justify-content: center; display: flex;">
+                <span class="theme-label">☀️</span>
+                <button class="theme-toggle mobile-theme-toggle" aria-label="Toggle dark/light mode">
+                    <div class="theme-toggle-slider">
+                        <span class="theme-icon sun-icon">☀️</span>
+                        <span class="theme-icon moon-icon">🌙</span>
+                    </div>
+                </button>
+                <span class="theme-label">🌙</span>
+            </div>
         </div>
         
         <!-- Mobile Overlay -->
         <div class="mobile-overlay" id="mobile-overlay"></div>
     </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content" id="main-content">
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -370,6 +396,9 @@
             </div>
         </div>
     </footer>
+
+    </div>
+    <!-- End Main Content Wrapper -->
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>

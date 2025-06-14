@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePhotoUpload();
     initializeScrollAnimations();
     initializeScrollToTop();
+    initializeThemeToggle();
 });
 
 /* =================================
@@ -53,6 +54,7 @@ function initializeMobileMenu() {
     const mobileNav = document.getElementById('mobile-nav');
     const mobileOverlay = document.getElementById('mobile-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-nav a');
+    const mainContent = document.getElementById('main-content');
 
     // Toggle mobile menu
     mobileMenu.addEventListener('click', function() {
@@ -92,6 +94,7 @@ function initializeMobileMenu() {
         mobileMenu.classList.add('active');
         mobileNav.classList.add('active');
         mobileOverlay.classList.add('active');
+        mainContent.classList.add('blur');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
 
@@ -99,6 +102,7 @@ function initializeMobileMenu() {
         mobileMenu.classList.remove('active');
         mobileNav.classList.remove('active');
         mobileOverlay.classList.remove('active');
+        mainContent.classList.remove('blur');
         document.body.style.overflow = ''; // Restore scrolling
     }
 
@@ -351,8 +355,56 @@ function initializeScrollAnimations() {
 }
 
 /* =================================
-   Scroll to Top Button
+   Theme Toggle Functionality
    ================================= */
+function initializeThemeToggle() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const mobileThemeToggle = document.querySelector('.mobile-theme-toggle');
+    const body = document.body;
+    
+    // Check for saved theme preference or default to light mode
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    
+    // Desktop theme toggle
+    themeToggle.addEventListener('click', function() {
+        toggleTheme();
+    });
+    
+    // Mobile theme toggle
+    if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener('click', function() {
+            toggleTheme();
+        });
+    }
+    
+    function toggleTheme() {
+        const currentTheme = body.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        setTheme(newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+    
+    function setTheme(theme) {
+        if (theme === 'dark') {
+            body.setAttribute('data-theme', 'dark');
+        } else {
+            body.removeAttribute('data-theme');
+        }
+    }
+    
+    // Listen for system theme changes
+    if (window.matchMedia) {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        mediaQuery.addEventListener('change', function(e) {
+            // Only auto-switch if user hasn't manually set a preference
+            if (!localStorage.getItem('theme')) {
+                setTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    }
+}
 function initializeScrollToTop() {
     // Create scroll-to-top button
     const scrollToTopBtn = document.createElement('button');
