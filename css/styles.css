@@ -199,8 +199,8 @@ body {
 }
 
 .logoimg {
-    width: 150px;
-    height: 150px;
+    width: 175px;
+    height: 175px;
     position: absolute;
     border-radius: 18px;
     top: -25px;
@@ -924,8 +924,8 @@ body {
     }
 
        .logoimg {
-        width: 100px;
-        height: 100px;
+        width: 150px;
+        height: 150px;
     }
 }
 
@@ -943,7 +943,7 @@ body {
     }
 
        .logoimg {
-        width: 75px;
-        height: 75px;
+        width: 100px;
+        height: 100px;
     }
 }
