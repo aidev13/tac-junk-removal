@@ -1,4 +1,41 @@
 /* =================================
+   Scroll Background Animations
+   ================================= */
+function initializeScrollBackgrounds() {
+    const body = document.body;
+    
+    const updateBackgroundOnScroll = throttle(function() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        
+        // Calculate scroll progress (0 to 1)
+        const scrollProgress = Math.min(scrollPosition / (documentHeight - windowHeight), 1);
+        
+        // Remove all scroll section classes
+        body.classList.remove('scroll-section-1', 'scroll-section-2', 'scroll-section-3', 'scroll-section-4');
+        
+        // Apply background based on scroll progress
+        if (scrollProgress < 0.25) {
+            body.classList.add('scroll-section-1');
+        } else if (scrollProgress < 0.5) {
+            body.classList.add('scroll-section-2');
+        } else if (scrollProgress < 0.75) {
+            body.classList.add('scroll-section-3');
+        } else {
+            body.classList.add('scroll-section-4');
+        }
+    }, 16); // ~60fps
+    
+    window.addEventListener('scroll', updateBackgroundOnScroll, { passive: true });
+    
+    // Initialize background
+    updateBackgroundOnScroll();
+}
+
+/* =================================
+   Scroll to Top Button
+   ================================= *//* =================================
    DOM Ready and Initial Setup
    ================================= */
 document.addEventListener('DOMContentLoaded', function() {
@@ -10,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeScrollAnimations();
     initializeScrollToTop();
     initializeThemeToggle();
+    initializeScrollBackgrounds();
 });
 
 /* =================================
