@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeSmoothScrolling();
     initializeMobileMenu();
     initializeContactForm();
-    initializePhotoUpload();
+    // initializePhotoUpload(); // Commented out photo upload functionality
     initializeScrollAnimations();
-    initializeScrollToTop();
+    initializeScrollToTop(); // Added this function call
     initializeThemeToggle();
 });
 
@@ -123,9 +123,11 @@ function initializeContactForm() {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Collect form data including photos
+        // Collect form data
         const formData = new FormData(this);
         
+        // Commented out photo-related functionality
+        /*
         // Add uploaded photos to form data
         const photoInput = document.getElementById('photos');
         if (photoInput.files.length > 0) {
@@ -133,6 +135,7 @@ function initializeContactForm() {
                 formData.append(`photo_${i}`, photoInput.files[i]);
             }
         }
+        */
         
         // Convert FormData to object for logging (excluding files)
         const data = {};
@@ -141,18 +144,18 @@ function initializeContactForm() {
                 data[key] = value;
             }
         }
-        data.photoCount = photoInput.files.length;
+        // data.photoCount = photoInput.files.length; // Commented out
         
         // Simulate form submission
         console.log('Form submitted with data:', data);
-        console.log('Photos attached:', photoInput.files.length);
+        // console.log('Photos attached:', photoInput.files.length); // Commented out
         
-        // Show success message with updated contact info
-        alert(`Thank you for your quote request! We've received your information${photoInput.files.length > 0 ? ` and ${photoInput.files.length} photo(s)` : ''}. Tristan will contact you within 24 hours with a detailed quote. For urgent requests, call (262) 446-6348.`);
+        // Show success message
+        alert(`Thank you for your quote request! We've received your information. Tristan will contact you within 24 hours with a detailed quote. For urgent requests, call (262) 446-6348.`);
         
         // Reset form and clear photo previews
         this.reset();
-        clearPhotoPreviews();
+        // clearPhotoPreviews(); // Commented out
         
         // Here you would send the FormData to your server
         // Example: fetch('/submit-form', { method: 'POST', body: formData })
@@ -178,8 +181,9 @@ function initializeContactForm() {
 }
 
 /* =================================
-   Photo Upload Functionality
+   Photo Upload Functionality - COMMENTED OUT
    ================================= */
+/*
 let uploadedFiles = [];
 
 function initializePhotoUpload() {
@@ -318,7 +322,7 @@ function formatFileSize(bytes) {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
 }
-
+*/
 /* =================================
    Scroll Animations
    ================================= */
@@ -460,8 +464,8 @@ function initializeScrollToTop() {
 /* =================================
    Global Functions (for inline handlers)
    ================================= */
-// Make removePhoto function globally accessible for inline onclick handlers
-window.removePhoto = removePhoto;
+// Photo upload function commented out
+// window.removePhoto = removePhoto;
 
 /* =================================
    Utility Functions
