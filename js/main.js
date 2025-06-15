@@ -1,41 +1,4 @@
 /* =================================
-   Scroll Background Animations
-   ================================= */
-function initializeScrollBackgrounds() {
-    const body = document.body;
-    
-    const updateBackgroundOnScroll = throttle(function() {
-        const scrollPosition = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        
-        // Calculate scroll progress (0 to 1)
-        const scrollProgress = Math.min(scrollPosition / (documentHeight - windowHeight), 1);
-        
-        // Remove all scroll section classes
-        body.classList.remove('scroll-section-1', 'scroll-section-2', 'scroll-section-3', 'scroll-section-4');
-        
-        // Apply background based on scroll progress
-        if (scrollProgress < 0.25) {
-            body.classList.add('scroll-section-1');
-        } else if (scrollProgress < 0.5) {
-            body.classList.add('scroll-section-2');
-        } else if (scrollProgress < 0.75) {
-            body.classList.add('scroll-section-3');
-        } else {
-            body.classList.add('scroll-section-4');
-        }
-    }, 16); // ~60fps
-    
-    window.addEventListener('scroll', updateBackgroundOnScroll, { passive: true });
-    
-    // Initialize background
-    updateBackgroundOnScroll();
-}
-
-/* =================================
-   Scroll to Top Button
-   ================================= *//* =================================
    DOM Ready and Initial Setup
    ================================= */
 document.addEventListener('DOMContentLoaded', function() {
@@ -46,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePhotoUpload();
     initializeScrollAnimations();
     initializeScrollToTop();
-    initializeScrollBackgrounds();
+    initializeThemeToggle();
 });
 
 /* =================================
@@ -184,8 +147,8 @@ function initializeContactForm() {
         console.log('Form submitted with data:', data);
         console.log('Photos attached:', photoInput.files.length);
         
-        // Show success message
-        alert(`Thank you for your quote request! We've received your information${photoInput.files.length > 0 ? ` and ${photoInput.files.length} photo(s)` : ''}. We'll contact you within 24 hours with a detailed quote.`);
+        // Show success message with updated contact info
+        alert(`Thank you for your quote request! We've received your information${photoInput.files.length > 0 ? ` and ${photoInput.files.length} photo(s)` : ''}. Tristan will contact you within 24 hours with a detailed quote. For urgent requests, call (262) 446-6348.`);
         
         // Reset form and clear photo previews
         this.reset();
@@ -442,6 +405,7 @@ function initializeThemeToggle() {
         });
     }
 }
+
 function initializeScrollToTop() {
     // Create scroll-to-top button
     const scrollToTopBtn = document.createElement('button');
