@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializePhotoUpload();
     initializeScrollAnimations();
     initializeScrollToTop();
-    initializeThemeToggle();
     initializeScrollBackgrounds();
 });
 
