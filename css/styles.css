@@ -171,8 +171,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: var(--navbar-bg);
-    backdrop-filter: blur(10px);
+    background-color: #a8b5bb;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     z-index: 1000;
     padding: 1rem 0;
@@ -180,7 +179,7 @@ body {
 }
 
 .navbar.scrolled {
-    background: var(--navbar-bg-scrolled);
+    background-color: #a8b5bb;
     box-shadow: var(--shadow);
 }
 
@@ -197,6 +196,14 @@ body {
     display: flex;
     align-items: center;
     gap: 2rem;
+}
+
+.logoimg {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 18px;
+    top: -25px;
 }
 
 .logo {
@@ -915,6 +922,11 @@ body {
         grid-template-columns: 1fr;
         text-align: left;
     }
+
+       .logoimg {
+        width: 100px;
+        height: 100px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -928,5 +940,10 @@ body {
 
     .section h2 {
         font-size: 2rem;
+    }
+
+       .logoimg {
+        width: 75px;
+        height: 75px;
     }
 }
