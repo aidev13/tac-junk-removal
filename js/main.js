@@ -151,7 +151,7 @@ function initializeContactForm() {
         // console.log('Photos attached:', photoInput.files.length); // Commented out
         
         // Show success message
-        alert(`Thank you for your quote request! We've received your information. Tristan will contact you within 24 hours with a detailed quote. For urgent requests, call (262) 446-6348.`);
+        alert(`Thank you for your quote request! We've received your information - We will be in touch with you shortly.`);
         
         // Reset form and clear photo previews
         this.reset();

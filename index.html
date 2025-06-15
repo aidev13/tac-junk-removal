@@ -449,13 +449,12 @@
                 .then((response) => {
                     btn.value = 'Request Free Quote';
                     btn.disabled = false;
-                    alert('Quote request sent successfully!');
                     console.log('EmailJS Success:', response);
                     document.getElementById('contact-form').reset();
                 }, (err) => {
                     btn.value = 'Request Free Quote';
                     btn.disabled = false;
-                    alert('Error sending request: ' + JSON.stringify(err));
+                    alert('Error sending request: ' + JSON.stringify(err) + 'Please call (262) 443-6348 so we can fix this issue');
                     console.log('EmailJS Error:', err);
                 });
         });
