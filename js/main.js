@@ -147,8 +147,8 @@ function initializeContactForm() {
         console.log('Form submitted with data:', data);
         console.log('Photos attached:', photoInput.files.length);
         
-        // Show success message
-        alert(`Thank you for your quote request! We've received your information${photoInput.files.length > 0 ? ` and ${photoInput.files.length} photo(s)` : ''}. We'll contact you within 24 hours with a detailed quote.`);
+        // Show success message with updated contact info
+        alert(`Thank you for your quote request! We've received your information${photoInput.files.length > 0 ? ` and ${photoInput.files.length} photo(s)` : ''}. Tristan will contact you within 24 hours with a detailed quote. For urgent requests, call (262) 446-6348.`);
         
         // Reset form and clear photo previews
         this.reset();
@@ -405,6 +405,7 @@ function initializeThemeToggle() {
         });
     }
 }
+
 function initializeScrollToTop() {
     // Create scroll-to-top button
     const scrollToTopBtn = document.createElement('button');
